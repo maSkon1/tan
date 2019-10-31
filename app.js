@@ -1,9 +1,16 @@
 'use strict';
-const Emitter = require("events");
-let emitter = new Emitter();
+const util = require("util");
+const EventEmitter = require("events");
+function User(){
+}
+util.inherits(User, EventEmitter);
 let eventName = "greet";
-emitter.on(eventName, function(data){
+User.prototype.sayHi = function(data){
+    this.emit(eventName, data);
+}
+let user = new User();
+// добавляем к объекту user обработку события "greet"
+user.on(eventName, function(data){
     console.log(data);
 });
- 
-emitter.emit(eventName, "Привет пир!");
+user.sayHi("Мне нужна твоя одежда...");
