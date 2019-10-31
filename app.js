@@ -1,12 +1,11 @@
-function displaySync(callback){
-    callback();
-}
-console.log("Начало работы программы");
-setTimeout(function(){        
-        console.log("timeout 500");
-}, 500);
-setTimeout(function(){      
-        console.log("timeout 100");
-}, 100);
-displaySync(function(){console.log("without timeout")});
-console.log("Завершение работы программы");
+'use strict';
+const fs = require("fs");
+fs.readFile("hello.txt", "utf8", // асинхронное чтение
+       function(error,data){
+       console.log("Асинхронное чтение файла");
+       if(error) throw error; // если возникла ошибка
+       console.log(data);  // выводим считанные данные
+});
+console.log("Синхронное чтение файла")
+let fileContent = fs.readFileSync("hello.txt", "utf8");// синхронное чтение
+console.log(fileContent);
