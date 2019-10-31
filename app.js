@@ -1,16 +1,10 @@
 'use strict';
-const util = require("util");
-const EventEmitter = require("events");
-function User(){
-}
-util.inherits(User, EventEmitter);
-let eventName = "greet";
-User.prototype.sayHi = function(data){
-    this.emit(eventName, data);
-}
-let user = new User();
-// добавляем к объекту user обработку события "greet"
-user.on(eventName, function(data){
-    console.log(data);
+const fs = require("fs");
+let writeableStream = fs.createWriteStream("hello.txt");
+writeableStream.write("Привет мир!");
+writeableStream.write("Продолжение записи \n");
+writeableStream.end("Завершение записи");
+let readableStream = fs.createReadStream("hello.txt", "utf8");
+readableStream.on("data", function(chunk){ 
+    console.log(chunk);
 });
-user.sayHi("Мне нужна твоя одежда...");
