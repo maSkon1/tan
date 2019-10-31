@@ -1,7 +1,6 @@
 const http = require("http");
-http.createServer(function(request,response){   
+http.createServer(function(request,response){ 
     response.end("Hello NodeJS!");
-     
 }).listen(3000, "127.0.0.1",function(){
-    console.log("Сервер начал прослушивание запросов на порту 3000");
+    console.log("РЎРµСЂРІРµСЂ РЅР°С‡Р°Р» РїСЂРѕСЃР»СѓС€РёРІР°РЅРёРµ Р·Р°РїСЂРѕСЃРѕРІ РЅР° РїРѕСЂС‚Сѓ 3000");
 });
