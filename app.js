@@ -1,7 +1,9 @@
-'use strict';
-const fs = require("fs");
-const zlib = require("zlib");
-let readableStream = fs.createReadStream("hello.txt", "utf8");
-let writeableStream = fs.createWriteStream("hello.txt.gz");
-let gzip = zlib.createGzip();
-readableStream.pipe(gzip).pipe(writeableStream);
+var http = require("http");
+http.createServer(function(request, response){
+console.log("Url: " + request.url);
+console.log("Тип запроса: " + request.method);
+console.log("User-Agent: " + request.headers["user-agent"]);
+console.log("Все заголовки");
+console.log(request.headers);   
+response.end();
+}).listen(3130);
