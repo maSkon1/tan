@@ -1,17 +1,12 @@
-// подключение express
-const express = require("express");
-// создаем объект приложения
+'use strict';
+const express = require("express"); 
 const app = express();
-// определяем обработчик для маршрута "/"
-app.get("/", function(request, response){
-response.send("<h1>Главная страница</h1>");
+app.get("/", function(request, response){   
+    response.send("<h1>Главная страница</h1>");
 });
-app.get("/about", function(request, response){
-     
-    response.send("<h1>О сайте</h1>");
-});
-app.get("/contact", function(request, response){
-     
-    response.send("<h1>Контакты</h1>");
+app.use("/about", function(request, response){    
+    let id = request.query.id;
+    let userName = request.query.name;
+    response.send("<h1>Информация</h1><p>id=" + id +"</p><p>name=" + userName + "</p>");
 });
 app.listen(3130);
