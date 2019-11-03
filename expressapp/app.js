@@ -1,25 +1,24 @@
 const express = require("express");
 const app = express();
-// определяем Router
-const productRouter = express.Router();
-// определяем маршруты и их обработчики внутри роутера
-productRouter.use("/create", function(request, response){
-  response.send("Добавление товара");
+// определяем роутеры
+const userRouter = express.Router();  // для адресов с "/users"
+userRouter.use("/create", function (request, response){
+    response.send("Добавление пользователя");
 });
-productRouter.use("/:id", function(request, response){
-  response.send(`Товар ${request.params.id}`);
+userRouter.use("/", function(request, response){
+    response.send("Список пользователей");
 });
-productRouter.use("/", function(request, response){
-  response.send("Список товаров");
+// сопоcтавляем роутер с конечной точкой "/users"
+app.use("/users", userRouter);
+// общие обработчики
+app.get("/about", function (request, response) {
+    response.send("О сайте");
 });
-// сопотавляем роутер с конечной точкой "/products"
-app.use("/products", productRouter);
- 
-app.use("/about", function (request, response) {
-  response.send("О сайте");
+app.get("/", function (request, response) {
+    response.send("Главная страница");
 });
- 
-app.use("/", function (request, response) {
-  response.send("Главная страница");
+// обработка ошибки 404
+app.use(function (req, res, next) {
+    res.status(404).send("Not Found")
 });
 app.listen(3130);
