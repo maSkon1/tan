@@ -6,13 +6,9 @@ const connection = mysql.createConnection({
   password: "usbw",
   port: "3307"
 });
-const sql = `create table if not exists users(
-  id int primary key auto_increment,
-  name varchar(255) not null,
-  age int not null
-)`;
+const sql = `INSERT INTO users(name, age) VALUES('Sam', 31)`;
 connection.query(sql, function(err, results) {
     if(err) console.log(err);
-    else console.log("Таблица создана");
+    console.log(results);
 });
 connection.end();
