@@ -6,9 +6,10 @@ const connection = mysql.createConnection({
   password: "usbw",
   port: "3307"
 });
- connection.execute("SELECT * FROM users",
-  function(err, results) {
-    console.log(err);
-    console.log(results); // собственно данные
-});
+const user = ["Tom", 29];
+const sql = "INSERT INTO users(name, age) VALUES(?, ?)";
+ connection.query(sql, user, function(err, results) {
+    if(err) console.log(err);
+    else console.log("Данные добавлены"); }); 
 connection.end();
+
