@@ -6,11 +6,9 @@ const connection = mysql.createConnection({
   password: "usbw",
   port: "3307"
 }).promise();
-const sql = "INSERT INTO users (name, age) VALUES (?, ?)";
-const user = ["Stan", 19];
-connection.query(sql, user)
-          .then(result =>{
-            console.log(result[0]);
+connection.execute("SELECT * FROM users")
+          .then(([rows, fields]) =>{
+            console.log(rows);
           })
           .catch(err =>{
             console.log(err);
