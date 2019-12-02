@@ -6,11 +6,11 @@ const connection = mysql.createConnection({
   database: "usersdb2",
   password: "usbw",
   port: "3307"
-});
-const sql = `SELECT * FROM users WHERE name=? AND age=?`;
-const filter = ["Tom", 29];
-connection.query(sql, filter, function(err, results) {
-    if(err) console.log(err);
-    console.log(results);
+}); 
+const sql = `UPDATE users SET age=? WHERE name=?`;
+const data = [34, "Tom"];
+connection.query(sql, data, function(err, results) {
+    if(err) console.log(err);
+    console.log(results);
 });
 connection.end();
