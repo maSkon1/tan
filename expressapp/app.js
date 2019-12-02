@@ -6,10 +6,9 @@ const connection = mysql.createConnection({
   password: "usbw",
   port: "3307"
 }).promise();
-// получение объектов
 connection.query("SELECT * FROM users")
           .then(result =>{
-            console.log(result);
+            console.log(result[0]);
           })
           .catch(err =>{
             console.log(err);
