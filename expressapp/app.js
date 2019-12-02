@@ -7,9 +7,10 @@ const connection = mysql.createConnection({
   port: "3307"
 }).promise();
 connection.query("SELECT * FROM users")
-          .then(result =>{
-            console.log(result[0]);
+          .then(([rows, fields]) =>{
+            console.log(rows);
           })
           .catch(err =>{
             console.log(err);
           });
+
