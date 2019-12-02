@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Р”РѕР±Р°РІР»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</title>
+    <title>Добавление пользователя</title>
     <meta charset="utf-8" />
+    <style>.field{width:180px;}</style>
 </head>
 <body>
-    <h1>Р”РѕР±Р°РІР»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</h1>
-     <form action="postUser" method="POST">
-        <label>РРјСЏ</label>
-        <input name="name" /><br><br>
-        <label>Р’РѕР·СЂР°СЃС‚</label>
-        <input name="age" type="number" min="1" max="110" /><br><br>
-        <input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" />
+    <h1>Добавление пользователя</h1>
+     <form method="POST">
+        <label>Имя</label><br>
+        <input name="name" class="field"/><br><br>
+        <label>Возраст</label><br>
+        <input name="age" type="number" class="field" min="1" max="110" /><br><br>
+        <input type="submit" value="Отправить" />
      </form>
-     <a href="/users">Рљ СЃРїРёСЃРєСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</a>
+     <a href="/">К списку пользователей</a>
 </body>
 <html>
