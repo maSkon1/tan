@@ -1,16 +1,14 @@
-﻿'use strict';
-const mysql = require("mysql2");
-const connection = mysql.createConnection({
+﻿const mysql = require("mysql2");
+const pool = mysql.createPool({
+  connectionLimit: 5,
   host: "localhost",
   user: "root",
-  database: "usersdb2",
+  database: "test",
   password: "usbw",
   port: "3307"
 }); 
-const sql = "DELETE FROM users WHERE name=?";
-const data = ["Sam"]; // удаляем пользователей с именем Sam
-connection.query(sql, data, function(err, results) {
-    if(err) console.log(err);
-    console.log(results);
+pool.end(function(err) {
+  if (err) {
+    return console.log(err.message);
+  }
 });
-connection.end();
