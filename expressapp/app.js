@@ -9,6 +9,5 @@ const connection = mysql.createConnection({
 const sql = `INSERT INTO users(name, age) VALUES('Sam', 31)`;
 connection.query(sql, function(err, results) {
     if(err) console.log(err);
-    console.log(results);
+    console.log(results.insertId);
 });
-connection.end();
